@@ -1,0 +1,43 @@
+import math
+
+count = input('give number of coordinates: ')
+
+listX = []
+listY = []
+result = zip()
+
+resultList = list(result)
+#question1
+for x in range(count):
+	listX.append(float(input('Input x coordinate: ')))
+	listY.append(float(input('Input y coordinate: ')))
+result = zip(listX, listY)
+print 'your set is ', result
+
+#question2
+sumX = 0
+sumY = 0
+for x in range(count):
+	sumX += result[x][0]
+	sumY += result[x][1]
+comX = sumX/count
+comY = sumY/count
+print 'center of mass is ', comX, ' ' , comY
+
+#question3
+listD = []
+for x in range(count):
+	listD.append(math.sqrt(math.pow(comX-result[x][0],2)+math.pow(comY-result[x][1],2)))
+print 'distance list is ' , listD
+
+#question4
+closest = 0
+farthest = 0
+for x in range(1,count):
+	if listD[x] > listD[farthest]:
+		farthest = x
+	if listD[x] < listD[closest]:
+		closest = x
+
+print 'closest is ', result[closest][0],',',result[closest][1], ' and the distance is ',listD[closest] 
+print 'farthest is ', result[farthest][0],',',result[farthest][1], ' and the distance is ',listD[farthest] 
